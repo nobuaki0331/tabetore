@@ -2319,6 +2319,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostPage',
@@ -2334,10 +2338,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    // prototype
     Intialize: function Intialize() {
-      this.item_name = '';
-      this.title = '';
-      this.content = '';
+      this.$refs.clear_form.reset(); // this.item_name = ''
+      // this.title = ''
+      // this.content = ''
     }
   }
 });
@@ -39058,7 +39063,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "form",
-      { staticClass: "mt-4" },
+      { ref: "clear_form", staticClass: "mt-4" },
       [
         _c("input-text", {
           attrs: {
@@ -39126,11 +39131,11 @@ var render = function() {
             attrs: { color: "error" },
             on: { click: _vm.Intialize }
           },
-          [_vm._v("\n    入力をやり直す\n  ")]
+          [_vm._v("\n      入力をやり直す\n    ")]
         ),
         _vm._v(" "),
         _c("v-btn", { staticClass: "mr-4", attrs: { color: "primary" } }, [
-          _vm._v("\n    submit\n  ")
+          _vm._v("\n      投稿する\n    ")
         ])
       ],
       1

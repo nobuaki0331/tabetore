@@ -4,23 +4,25 @@
 
     <h3>商品の口コミを投稿する</h3>
 
-    <form class="mt-4">
+    <form
+      ref="clear_form"
+      class="mt-4">
       <input-text
-        v-model="item_name"
+        v-model="formData.item_name"
         name="name"
         label="商品名"
         placeholder="商品名"
         required />
 
       <input-text
-        v-model="title"
+        v-model="formData.title"
         name="title"
         label="タイトル"
         placeholder="タイトル"
         required />
 
       <input-text
-        v-model="content"
+        v-model="formData.content"
         name="content"
         label="投稿内容"
         placeholder="投稿内容"
@@ -59,20 +61,19 @@ export default {
 
   data() {
     return {
-      item_name: '',
-      title: '',
-      content: '',
+      formData: {
+        item_name: '',
+        title: '',
+        content: '',
+      },
 
       checkbox: '',
     }
   },
 
   methods: {
-    // prototype
     Intialize() {
-      this.item_name = ''
-      this.title = ''
-      this.content = ''
+      this.$refs.clear_form.reset()
     }
   }
 }
