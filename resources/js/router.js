@@ -1,6 +1,9 @@
 import Router from 'vue-router'
-import Hoge from './components/Hoge.vue'
-import Header from './components/Header.vue'
+import NewItem from './components/NewItem.vue'
+import Item from './components/Item.vue'
+import Post from './components/Post.vue'
+import Gallery from './components/Gallery.vue'
+import Movie from './components/Movie.vue'
 
 export default new Router({
   mode: 'history',
@@ -10,10 +13,30 @@ export default new Router({
     //   name: 'hoge',
     //   component: Hoge
     // },
-    // {
-    //   path: '/',
-    //   name: 'header',
-    //   component: Hoge
-    // },
+    {
+      path: '/newitem',
+      name: 'newitem',
+      component: NewItem
+    },
+    {
+      path: '/item',
+      name: 'item',
+      component: Item
+    },
+    {
+      path: '/post',
+      name: 'post',
+      component: Post
+    },
+    {
+      path: '/gallery',
+      name: 'gallery',
+      component: Gallery
+    },
+    {
+      path: '/movie',
+      name: 'movie',
+      component: Movie
+    },
   ]
 });

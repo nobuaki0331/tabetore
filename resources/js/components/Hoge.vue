@@ -3,20 +3,20 @@
     <v-navigation-drawer
       v-model="drawer"
       app
-      clipped
-    >
+      clipped>
       <v-list dense>
         <v-list-item
           v-for="item in items"
           :key="item.text"
-          link
-        >
+          link>
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              {{ item.text }}
+
+              <router-link :to="item.path">{{ item.text }}</router-link>
+
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -25,21 +25,18 @@
           <v-list-item
             v-for="item in items2"
             :key="item.text"
-            link
-          >
+            link>
             <v-list-item-avatar>
               <img
                 :src="`https://randomuser.me/api/portraits/men/${item.picture}.jpg`"
-                alt=""
-              >
+                alt="">
             </v-list-item-avatar>
             <v-list-item-title v-text="item.text"></v-list-item-title>
           </v-list-item>
         </v-list>
         <v-list-item
           class="mt-4"
-          link
-        >
+          link>
           <v-list-item-action>
             <v-icon color="grey darken-1">mdi-plus-circle-outline</v-icon>
           </v-list-item-action>
@@ -58,40 +55,39 @@
       app
       clipped-left
       color="red"
-      dense
-    >
+      dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-icon
         class="mx-4"
-        large
-      >
+        large>
         mdi-youtube
       </v-icon>
       <v-toolbar-title class="mr-12 align-center">
-        <span class="title">Youtube</span>
+        <span class="title">食べトレ</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-row
         align="center"
-        style="max-width: 650px"
-      >
+        style="max-width: 650px">
         <v-text-field
           :append-icon-cb="() => {}"
           placeholder="Search..."
           single-line
           append-icon="mdi-magnify"
           color="white"
-          hide-details
-        ></v-text-field>
+          hide-details>
+        </v-text-field>
       </v-row>
     </v-app-bar>
 
+    <router-view></router-view>
+
     <v-main>
-      <v-container class="fill-height">
+      <router-view></router-view>
+      <!-- <v-container class="fill-height">
         <v-row
           justify="center"
-          align="center"
-        >
+          align="center">
           <v-col class="shrink">
             <v-tooltip right>
               <template v-slot:activator="{ on }">
@@ -100,8 +96,7 @@
                   icon
                   large
                   target="_blank"
-                  v-on="on"
-                >
+                  v-on="on">
                   <v-icon large>mdi-code-tags</v-icon>
                 </v-btn>
               </template>
@@ -109,7 +104,7 @@
             </v-tooltip>
           </v-col>
         </v-row>
-      </v-container>
+      </v-container> -->
     </v-main>
   </v-app>
 </template>
@@ -122,11 +117,11 @@
     data: () => ({
       drawer: null,
       items: [
-        { icon: 'mdi-trending-up', text: 'Most Popular' },
-        { icon: 'mdi-youtube-subscription', text: 'Subscriptions' },
-        { icon: 'mdi-history', text: 'History' },
-        { icon: 'mdi-playlist-play', text: 'Playlists' },
-        { icon: 'mdi-clock', text: 'Watch Later' },
+        { icon: 'mdi-trending-up', text: '新着商品', path: 'newitem' },
+        { icon: 'mdi-youtube-subscription', text: '商品一覧', path: 'item' },
+        { icon: 'mdi-history', text: '口コミ投稿', path: 'post' },
+        { icon: 'mdi-playlist-play', text: '画像', path: 'gallery' },
+        { icon: 'mdi-clock', text: '動画', path: 'movie' },
       ],
       items2: [
         { picture: 28, text: 'Joseph' },
@@ -141,3 +136,9 @@
     },
   }
 </script>
+
+<style scoped>
+.v-application a {
+  color : inherit;
+}
+</style>
