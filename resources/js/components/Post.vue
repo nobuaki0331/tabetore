@@ -21,7 +21,7 @@
         placeholder="タイトル"
         required />
 
-      <input-text
+      <text-area
         v-model="formData.content"
         name="content"
         label="投稿内容"
@@ -46,17 +46,27 @@
         投稿する
       </v-btn>
     </form>
+
+    <!-- <v-img
+      src="../img/sample1.jpg"
+      class="image-postion"
+      max-height="200"
+      aspect-ratio="1.4"
+      contain>
+    </v-img> -->
   </div>
 </template>
 
 <script>
 import InputText from './Form/InputText.vue'
+import TextArea from './Form/TextArea.vue'
 
 export default {
   name: 'PostPage',
 
   components: {
     InputText,
+    TextArea,
   },
 
   data() {
@@ -78,3 +88,6 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+</style>

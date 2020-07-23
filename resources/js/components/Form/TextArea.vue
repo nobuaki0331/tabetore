@@ -8,22 +8,20 @@
     </label>
 
     <div class="col-6">
-      <input
+      <textarea
         :id="name"
         :value="value"
         :disabled="disabled"
         class="form-control"
         :placeholder="placeholder"
-        :type="type"
-        @input="updateValue ">
+        :type="type" />
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'InputText',
+  name: 'TextArea',
 
   props: {
     value: {
@@ -59,16 +57,9 @@ export default {
     placeholder: {
       type: String,
       default: null,
-    }
-  },
-
-  methods: {
-    updateValue(e){
-      this.$emit('input', e.target.value)
-    }
+    },
   }
 }
-
 </script>
 
 <style scoped>
