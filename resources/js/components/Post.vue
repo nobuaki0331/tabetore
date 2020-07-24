@@ -12,6 +12,7 @@
         name="id"
         label="登録ID"
         placeholder="登録ID"
+        required-line
         required />
 
       <input-text
@@ -19,6 +20,7 @@
         name="title"
         label="タイトル"
         placeholder="タイトル"
+        required-line
         required />
 
       <text-area
@@ -26,6 +28,7 @@
         name="content"
         label="投稿内容"
         placeholder="投稿内容"
+        required-line
         required />
 
       <v-checkbox

@@ -1,13 +1,13 @@
 <template>
   <div class="form-group row">
     <label
-      class="col-1 col-form-label"
-      :class="{ 'form-required' : required }"
+      class="col-md-1 col-form-label"
+      :class="{ 'form-required' : required, 'form-undeline' : requiredLine }"
       :for="name">
       {{ label }}
     </label>
 
-    <div class="col-6">
+    <div class="col-md-6">
       <input
         :id="name"
         :value="value"
@@ -59,6 +59,11 @@ export default {
     placeholder: {
       type: String,
       default: null,
+    },
+
+    requiredLine: {
+      type: Boolean,
+      default: false,
     }
   },
 
@@ -76,5 +81,9 @@ export default {
   color: black;
   text-align: center;
   line-height: 3;
+}
+
+.form-undeline {
+  text-decoration: underline;
 }
 </style>

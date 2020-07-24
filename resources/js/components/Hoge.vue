@@ -122,4 +122,9 @@
 .theme--dark.v-application {
   background: white !important;
 }
+
+.v-main__wrap {
+  width: 90%;
+  margin: 0 auto;
+}
 </style>

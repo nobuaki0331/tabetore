@@ -1,84 +1,81 @@
 
 <template>
-  <div>
-    <h3 class="content-title">商品一覧</h3>
-    <v-card
-      class="mx-auto"
-      max-width="1000">
-      <v-system-bar
-        color="gray darken-2"
-        dark>
-        <v-spacer></v-spacer>
-      </v-system-bar>
-
-      <v-toolbar>
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-      </v-toolbar>
-
-      <v-container fluid>
-        <v-row dense>
-          <v-col
-            v-for="card in cards"
-            :key="card.id"
-            :cols="card.flex">
-            <v-card>
-              <v-img
-                :src="card.src"
-                class="white--text align-end"
-                gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                height="200px">
-                <v-card-title :class="{ 'yellow--text' : card.color }">{{ card.title }}</v-card-title>
-              </v-img>
-
-              <v-card-actions>
-                <v-spacer></v-spacer>
-
-                <v-btn icon>
-                  <v-icon>mdi-heart</v-icon>
-                </v-btn>
-
-                <v-btn icon>
-                  <v-icon>mdi-bookmark</v-icon>
-                </v-btn>
-
-                <v-btn icon>
-                  <v-icon>mdi-share-variant</v-icon>
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card>
-  </div>
+<div>
+  <h3 class="text-positon">口コミ一覧</h3>
+  <v-simple-table>
+    <template v-slot:default>
+      <thead>
+        <tr>
+          <th class="text-left">ID</th>
+          <th class="text-left">タイトル</th>
+          <th class="text-left">投稿内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in desserts" :key="item.name">
+          <td>{{ item.name }}</td>
+          <td>{{ item.calories }}</td>
+          <td>{{ item.calories }}</td>
+        </tr>
+      </tbody>
+    </template>
+  </v-simple-table>
+</div>
 </template>
 
 <script>
   export default {
-    data: () => ({
-      cards: [
-        { title: '商品名', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', flex: 12 , color: true},
-        { title: '商品名', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 3 , color: true},
-        { title: '商品名', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 3 , color: true},
-        { title: '商品名', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 3 , color: true},
-        { title: '商品名', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 3 , color: false},
-        { title: '商品名', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 3 , color: false},
-        { title: '商品名', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 3 , color: false},
-        { title: '商品名', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 3 , color: false},
-        { title: '商品名', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 3 , color: false},
-        { title: '商品名', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 3 , color: false},
-        { title: '商品名', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 3 , color: false},
-        { title: '商品名', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 3 , color: false},
-        { title: '商品名', src: './img/sample1.jpg', flex: 3 ,color: false},
-      ],
-    }),
+    data () {
+      return {
+        desserts: [
+          {
+            name: 'Frozen Yogurt',
+            calories: 159,
+          },
+          {
+            name: 'Ice cream sandwich',
+            calories: 237,
+          },
+          {
+            name: 'Eclair',
+            calories: 262,
+          },
+          {
+            name: 'Cupcake',
+            calories: 305,
+          },
+          {
+            name: 'Gingerbread',
+            calories: 356,
+          },
+          {
+            name: 'Jelly bean',
+            calories: 375,
+          },
+          {
+            name: 'Lollipop',
+            calories: 392,
+          },
+          {
+            name: 'Honeycomb',
+            calories: 408,
+          },
+          {
+            name: 'Donut',
+            calories: 452,
+          },
+          {
+            name: 'KitKat',
+            calories: 518,
+          },
+        ],
+      }
+    },
   }
 </script>
 
 <style scoped>
-.content-title {
+.text-positon {
   text-align: center;
 }
 </style>
