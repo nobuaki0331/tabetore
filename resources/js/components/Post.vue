@@ -77,10 +77,6 @@ export default {
     }
   },
 
-  mounted(){
-    // this.fetchItem()
-  },
-
   methods: {
     Intialize() {
       this.$refs.clear_form.reset()
@@ -100,3 +96,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.text-color {
+  color: black;
+}
+
+</style>
