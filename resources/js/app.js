@@ -15,6 +15,7 @@ import NewItem from './components/NewItem'
 require('./bootstrap');
 
 import router from './router'
+import axios from 'axios';
 
 window.Vue = require('vue');
 Vue.use(VueRouter);

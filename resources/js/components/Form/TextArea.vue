@@ -14,7 +14,8 @@
         :disabled="disabled"
         class="form-control"
         :placeholder="placeholder"
-        :type="type" />
+        :type="type"
+        @input="updateValue" />
     </div>
   </div>
 </template>
@@ -58,6 +59,12 @@ export default {
       type: String,
       default: null,
     },
+  },
+
+  methods: {
+    updateValue(e){
+      this.$emit('input', e.target.value)
+    }
   }
 }
 </script>

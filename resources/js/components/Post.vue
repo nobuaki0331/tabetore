@@ -8,10 +8,10 @@
       ref="clear_form"
       class="mt-4">
       <input-text
-        v-model="formData.item_name"
-        name="name"
-        label="商品名"
-        placeholder="商品名"
+        v-model="formData.id"
+        name="id"
+        label="登録ID"
+        placeholder="登録ID"
         required />
 
       <input-text
@@ -41,25 +41,19 @@
       </v-btn>
 
       <v-btn
+        @click.prevent = "fetchItem"
         color="primary"
         class="mr-4">
         投稿する
       </v-btn>
     </form>
-
-    <!-- <v-img
-      src="../img/sample1.jpg"
-      class="image-postion"
-      max-height="200"
-      aspect-ratio="1.4"
-      contain>
-    </v-img> -->
   </div>
 </template>
 
 <script>
 import InputText from './Form/InputText.vue'
 import TextArea from './Form/TextArea.vue'
+import axios from 'axios';
 
 export default {
   name: 'PostPage',
@@ -72,22 +66,37 @@ export default {
   data() {
     return {
       formData: {
-        item_name: '',
+        id: '',
+        // item_name: '',
         title: '',
         content: '',
       },
 
       checkbox: '',
+      newItems: []
     }
+  },
+
+  mounted(){
+    // this.fetchItem()
   },
 
   methods: {
     Intialize() {
       this.$refs.clear_form.reset()
+    },
+
+    fetchItem(){
+      axios.post('api/post/', {
+        user_id: this.formData.id,
+        title: this.formData.title,
+        content: this.formData.content,
+      }).then((res) => {
+        this.newItems = res.data
+
+        this.Intialize()
+      }).catch((error) => console.log(error))
     }
   }
 }
 </script>
-
-<style scoped>
-</style>
