@@ -1,3 +1,8 @@
+<?php
+  $user = Auth::user() ?? false;
+
+?>
+
 @extends('layouts.app')
 
 @section('content')
