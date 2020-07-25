@@ -2334,41 +2334,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      desserts: [{
-        name: 'Frozen Yogurt',
-        calories: 159
-      }, {
-        name: 'Ice cream sandwich',
-        calories: 237
-      }, {
-        name: 'Eclair',
-        calories: 262
-      }, {
-        name: 'Cupcake',
-        calories: 305
-      }, {
-        name: 'Gingerbread',
-        calories: 356
-      }, {
-        name: 'Jelly bean',
-        calories: 375
-      }, {
-        name: 'Lollipop',
-        calories: 392
-      }, {
-        name: 'Honeycomb',
-        calories: 408
-      }, {
-        name: 'Donut',
-        calories: 452
-      }, {
-        name: 'KitKat',
-        calories: 518
-      }]
+      postItems: {}
     };
+  },
+  mounted: function mounted() {
+    this.fetchItem();
+  },
+  methods: {
+    fetchItem: function fetchItem() {
+      var _this = this;
+
+      axios.get('api/item').then(function (res) {
+        _this.postItems = res.data;
+      });
+    },
+    //　降順ソート
+    onClickIdDesc: function onClickIdDesc() {
+      this.postItems.sort(function (a, b) {
+        if (a.user_id > b.user_id) return -1;
+        if (a.user_id < b.user_id) return 1;
+        return 0;
+      });
+    },
+    // 昇順ソート
+    onClickIdAsc: function onClickIdAsc() {
+      this.postItems.sort(function (a, b) {
+        if (a.user_id < b.user_id) return -1;
+        if (a.user_id > b.user_id) return 1;
+        return 0;
+      });
+    }
   }
 });
 
@@ -7180,7 +7188,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.text-positon[data-v-2c619f04] {\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.text-positon[data-v-2c619f04] {\n  text-align: center;\n}\ntbody > tr > td[data-v-2c619f04] {\n  padding: 15px !important;\n}\n", ""]);
 
 // exports
 
@@ -39534,6 +39542,25 @@ var render = function() {
     [
       _c("h3", { staticClass: "text-positon" }, [_vm._v("口コミ一覧")]),
       _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "m-2" },
+        [
+          _c(
+            "v-btn",
+            { attrs: { small: "" }, on: { click: _vm.onClickIdDesc } },
+            [_vm._v("IDで降順")]
+          ),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            { attrs: { small: "" }, on: { click: _vm.onClickIdAsc } },
+            [_vm._v("IDで昇順")]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c("v-simple-table", {
         scopedSlots: _vm._u([
           {
@@ -39554,13 +39581,13 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "tbody",
-                  _vm._l(_vm.desserts, function(item) {
-                    return _c("tr", { key: item.name }, [
-                      _c("td", [_vm._v(_vm._s(item.name))]),
+                  _vm._l(_vm.postItems, function(item) {
+                    return _c("tr", { key: item.id }, [
+                      _c("td", [_vm._v(_vm._s(item.user_id))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.calories))]),
+                      _c("td", [_vm._v(_vm._s(item.title))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.calories))])
+                      _c("td", [_vm._v(_vm._s(item.content))])
                     ])
                   }),
                   0
