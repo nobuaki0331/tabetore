@@ -19,8 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'api'], function() {
-    // Route::get('get', 'TodoController@getTodos');
-    // Route::match(["get,post", "options"], 'post', 'PostController@store');
-    Route::get('item', 'PostController@index'); //← 追記
-    Route::post('post', 'PostController@store'); //← 追記
+    Route::get('item', 'PostController@index');
+    Route::post('post', 'PostController@store');
 });

@@ -3,16 +3,18 @@
 <div>
   <h3 class="text-positon">口コミ一覧</h3>
 
-  <div class="m-2">
-    <v-btn
-      @click="onClickIdDesc"
-      small>IDで降順</v-btn>
-    <v-btn
-      @click="onClickIdAsc"
-      small>IDで昇順</v-btn>
-  </div>
-  <v-simple-table>
-    <template v-slot:default>
+  <div class="content">
+    <div class="m-2">
+      <v-btn
+        @click="onClickIdDesc"
+        text color="primary"
+        small>IDで降順</v-btn>
+      <v-btn
+        @click="onClickIdAsc"
+        text color="error"
+        small>IDで昇順</v-btn>
+    </div>
+    <v-simple-table light>
       <thead>
         <tr>
           <th
@@ -28,8 +30,8 @@
           <td>{{ item.content }}</td>
         </tr>
       </tbody>
-    </template>
-  </v-simple-table>
+    </v-simple-table>
+  </div>
 </div>
 </template>
 
@@ -76,6 +78,10 @@
 </script>
 
 <style scoped>
+.content {
+  width: 90%;
+  margin: 0 auto;
+}
 .text-positon {
   text-align: center;
 }

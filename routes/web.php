@@ -25,4 +25,5 @@ Route::get('/item', 'NewItemController@index')->name('newitem');
 Route::get('/post', 'NewItemController@index')->name('newitem');
 Route::get('/gallery', 'NewItemController@index')->name('newitem');
 Route::get('/movie', 'NewItemController@index')->name('newitem');
-
+Route::get('/mypage', 'MypageController@index')->name('mypage');
+Route::get('/logout', 'UserController@getLogout')->name('logout');

@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-  <Hoge></Hoge>
+  <Hoge :user-info='@json($user)'></Hoge>
 @endsection

@@ -66,22 +66,22 @@
         <span class="title">食べトレ</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-row
-        align="center"
-        style="max-width: 650px">
-        <v-text-field
-          :append-icon-cb="() => {}"
-          placeholder="Search..."
-          single-line
-          append-icon="mdi-magnify"
-          color="white"
-          hide-details>
-        </v-text-field>
-      </v-row>
+
+      <a href="/logout">ログアウト</a>
+      <v-chip
+        @click="transition"
+        class="ma-2"
+        color="indigo"
+        text-color="white">
+        <v-avatar left>
+          <v-icon>mdi-account-circle</v-icon>
+        </v-avatar>
+        マイページ
+      </v-chip>
     </v-app-bar>
 
     <v-main>
-      <router-view></router-view>
+      <router-view :user-info="userInfo"></router-view>
     </v-main>
   </v-app>
 </template>
@@ -90,6 +90,10 @@
   export default {
     props: {
       source: String,
+      userInfo: {
+        type: Object,
+        default: () => {},
+      },
     },
     data: () => ({
       drawer: null,
@@ -111,6 +115,14 @@
     created () {
       this.$vuetify.theme.dark = true
     },
+
+    methods: {
+      transition() {
+        if (this.$route.path !== '/mypage') {
+          this.$router.push('mypage')
+        }
+      }
+    }
   }
 </script>
 

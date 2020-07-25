@@ -4,6 +4,7 @@ import Item from './components/Item.vue'
 import Post from './components/Post.vue'
 import Gallery from './components/Gallery.vue'
 import Movie from './components/Movie.vue'
+import Mypage from './components/Mypage.vue'
 
 export default new Router({
   mode: 'history',
@@ -37,6 +38,11 @@ export default new Router({
       path: '/movie',
       name: 'movie',
       component: Movie
+    },
+    {
+      path: '/mypage',
+      name: 'mypage',
+      component: Mypage
     },
   ]
 });
