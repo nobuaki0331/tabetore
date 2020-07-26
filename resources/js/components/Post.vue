@@ -70,7 +70,6 @@ export default {
     return {
       formData: {
         id: '',
-        // item_name: '',
         title: '',
         content: '',
       },
@@ -90,11 +89,17 @@ export default {
         user_id: this.formData.id,
         title: this.formData.title,
         content: this.formData.content,
-      }).then((res) => {
+      })
+      .then((res) => {
         this.newItems = res.data
+      })
+      .catch((error) => console.log(error))
+      .finally(()=> {
+        alert('口コミを投稿しました')
 
+        // フォームデータの初期化
         this.Intialize()
-      }).catch((error) => console.log(error))
+      })
     }
   }
 }

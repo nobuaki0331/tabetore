@@ -1,7 +1,7 @@
 <template>
   <div class="content">
 
-    <h3>マイページ</h3>
+    <h3>ユーザー情報の編集</h3>
 
     <form
       ref="clear_form"
@@ -40,6 +40,13 @@
         class="mr-4 mt-4"
         @click.prevent="updateUserInfo">
         入力情報を更新する
+      </v-btn>
+
+      <v-btn
+        color="grey lighten-2"
+        class="btn-font-color mr-4 mt-4"
+        @click="transitionPage">
+        自分の投稿履歴を見にいく
       </v-btn>
     </form>
   </div>
@@ -103,6 +110,10 @@ export default {
         console.log(e)
         alert('更新に失敗しました')
       })
+    },
+
+    transitionPage() {
+      this.$router.push({ name: 'my-post-item' })
     }
   }
 }
@@ -115,6 +126,10 @@ export default {
 }
 
 .text-color {
+  color: black;
+}
+
+.btn-font-color {
   color: black;
 }
 

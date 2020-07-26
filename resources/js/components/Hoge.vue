@@ -71,7 +71,7 @@
       <v-chip
         @click="transition"
         class="ma-2"
-        color="indigo"
+        color="#3949AB"
         text-color="white">
         <v-avatar left>
           <v-icon>mdi-account-circle</v-icon>

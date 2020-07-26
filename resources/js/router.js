@@ -5,6 +5,7 @@ import Post from './components/Post.vue'
 import Gallery from './components/Gallery.vue'
 import Movie from './components/Movie.vue'
 import Mypage from './components/Mypage.vue'
+import MyPostItem from './components/MyPostItem.vue'
 
 export default new Router({
   mode: 'history',
@@ -39,10 +40,17 @@ export default new Router({
       name: 'movie',
       component: Movie
     },
+    // ユーザー情報を編集する
     {
       path: '/mypage',
       name: 'mypage',
       component: Mypage
+    },
+    // ユーザーの投稿履歴を確認する
+    {
+      path: '/mypage',
+      name: 'my-post-item',
+      component: MyPostItem
     },
   ]
 });
