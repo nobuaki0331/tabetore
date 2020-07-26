@@ -27,4 +27,8 @@ class MypageController extends Controller
 
         return $auth_user;
     }
+
+    public function apiDestroy($postId) {
+        Post::find($postId)->delete();
+    }
 }

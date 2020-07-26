@@ -39,9 +39,13 @@
             justify="end">
             <v-icon class="mr-1">mdi-heart</v-icon>
             <span class="subheading mr-2">256</span>
-            <span class="mr-1">·</span>
-            <v-icon class="mr-1">mdi-share-variant</v-icon>
-            <span class="subheading">45</span>
+            <v-chip
+              class="ma-2"
+              color="red"
+              text-color="white"
+              @click="removePostItem(item.id)">
+              削除
+            </v-chip>
           </v-row>
         </v-list-item>
       </v-card-actions>
@@ -94,14 +98,33 @@ export default {
     fetchUserItem() {
       const userId = this.userInfo.id
 
-      axios.get(`api/mypage/post/${userId}`).then( res => {
+      axios.get(`api/mypage/post/${userId}`)
+      .then( res => {
         this.myItems = res.data
       })
+      .catch( error => console.log(error))
 
     },
 
     returnPage() {
       this.$router.back()
+    },
+
+    removePostItem(id=null) {
+      const result = confirm('投稿を削除しますか？');
+
+      if (result) {
+        axios.delete(`api/mypage/post/${id}`)
+        .then( () => {
+          alert('削除成功')
+
+          this.fetchUserItem()
+        })
+        .catch( error => {
+          console.log(error)
+          alert('削除できませんでした...')
+        })
+      }
     }
   }
 }

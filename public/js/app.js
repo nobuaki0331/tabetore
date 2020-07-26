@@ -2518,6 +2518,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostItem',
   props: {
@@ -2549,10 +2553,29 @@ __webpack_require__.r(__webpack_exports__);
       var userId = this.userInfo.id;
       axios.get("api/mypage/post/".concat(userId)).then(function (res) {
         _this.myItems = res.data;
+      })["catch"](function (error) {
+        return console.log(error);
       });
     },
     returnPage: function returnPage() {
       this.$router.back();
+    },
+    removePostItem: function removePostItem() {
+      var _this2 = this;
+
+      var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var result = confirm('投稿を削除しますか？');
+
+      if (result) {
+        axios["delete"]("api/mypage/post/".concat(id)).then(function () {
+          alert('削除成功');
+
+          _this2.fetchUserItem();
+        })["catch"](function (error) {
+          console.log(error);
+          alert('削除できませんでした...');
+        });
+      }
     }
   }
 });
@@ -40141,15 +40164,19 @@ var render = function() {
                           _vm._v("256")
                         ]),
                         _vm._v(" "),
-                        _c("span", { staticClass: "mr-1" }, [_vm._v("·")]),
-                        _vm._v(" "),
-                        _c("v-icon", { staticClass: "mr-1" }, [
-                          _vm._v("mdi-share-variant")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "subheading" }, [
-                          _vm._v("45")
-                        ])
+                        _c(
+                          "v-chip",
+                          {
+                            staticClass: "ma-2",
+                            attrs: { color: "red", "text-color": "white" },
+                            on: {
+                              click: function($event) {
+                                return _vm.removePostItem(item.id)
+                              }
+                            }
+                          },
+                          [_vm._v("\n            削除\n          ")]
+                        )
                       ],
                       1
                     )
