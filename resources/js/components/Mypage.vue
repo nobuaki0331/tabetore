@@ -11,6 +11,7 @@
         name="id"
         label="登録ID"
         placeholder="登録ID"
+        disabled
         required />
 
       <input-text
@@ -36,7 +37,8 @@
 
       <v-btn
         color="primary"
-        class="mr-4 mt-4">
+        class="mr-4 mt-4"
+        @click.prevent="updateUserInfo">
         入力情報を更新する
       </v-btn>
     </form>
@@ -87,6 +89,19 @@ export default {
     fetchItem(){
       axios.get('api/mypage').then(res => {
         console.log(res)
+      })
+    },
+
+    updateUserInfo() {
+      axios.post(`api/mypage/${this.formData.id}`, {
+        id: this.formData.id,
+        name: this.formData.name,
+        email: this.formData.email,
+      }).then(()=>{
+        alert('更新が成功しました')
+      }).catch((e) => {
+        console.log(e)
+        alert('更新に失敗しました')
       })
     }
   }

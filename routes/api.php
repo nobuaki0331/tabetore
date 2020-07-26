@@ -21,4 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'api'], function() {
     Route::get('item', 'PostController@index');
     Route::post('post', 'PostController@store');
+    Route::post('mypage/{id}', 'MypageController@update');
 });
