@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="text-center">自分の投稿履歴</h3>
+    <h3 class="text-center">{{ postHistory }}</h3>
 
     <v-card
       v-for="item in myItems"
@@ -79,8 +79,15 @@ export default {
     }
   },
 
-  mounted() {
+  created() {
     this.fetchUserItem()
+  },
+
+  computed: {
+    postHistory() {
+      const item = this.myItems ? '自分の投稿した履歴' : '現在の投稿はありません'
+      return item;
+    }
   },
 
   methods: {
@@ -89,7 +96,6 @@ export default {
 
       axios.get(`api/mypage/post/${userId}`).then( res => {
         this.myItems = res.data
-        console.log(this.myItems)
       })
 
     },

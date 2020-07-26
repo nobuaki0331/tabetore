@@ -2533,8 +2533,14 @@ __webpack_require__.r(__webpack_exports__);
       myItems: []
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     this.fetchUserItem();
+  },
+  computed: {
+    postHistory: function postHistory() {
+      var item = this.myItems ? '自分の投稿した履歴' : '現在の投稿はありません';
+      return item;
+    }
   },
   methods: {
     fetchUserItem: function fetchUserItem() {
@@ -2543,7 +2549,6 @@ __webpack_require__.r(__webpack_exports__);
       var userId = this.userInfo.id;
       axios.get("api/mypage/post/".concat(userId)).then(function (res) {
         _this.myItems = res.data;
-        console.log(_this.myItems);
       });
     },
     returnPage: function returnPage() {
@@ -40061,7 +40066,9 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("h3", { staticClass: "text-center" }, [_vm._v("自分の投稿履歴")]),
+      _c("h3", { staticClass: "text-center" }, [
+        _vm._v(_vm._s(_vm.postHistory))
+      ]),
       _vm._v(" "),
       _vm._l(_vm.myItems, function(item) {
         return _c(
