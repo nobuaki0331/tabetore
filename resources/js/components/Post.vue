@@ -46,7 +46,7 @@
       <v-btn
         @click.prevent = "fetchItem"
         color="primary"
-        class="mr-4">
+        class="btn-mt-sm mr-4">
         投稿する
       </v-btn>
     </form>
@@ -105,6 +105,12 @@ export default {
 <style scoped>
 .text-color {
   color: black;
+}
+
+@media screen and (max-width:367px){
+  .btn-mt-sm {
+    margin-top: 10px;
+  }
 }
 
 </style>

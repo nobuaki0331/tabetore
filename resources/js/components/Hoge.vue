@@ -58,19 +58,21 @@
       dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-icon
-        class="mx-4"
+        class="sm-display-none mx-4"
         large>
         mdi-youtube
       </v-icon>
-      <v-toolbar-title class="mr-12 align-center">
-        <span class="title">食べトレ</span>
+      <v-toolbar-title class="title-font-size align-center">
+        食べトレ
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <a href="/logout">ログアウト</a>
+      <a
+        class="link-font-size"
+        href="/logout">ログアウト</a>
       <v-chip
         @click="transition"
-        class="ma-2"
+        class="link-font-size ma-2"
         color="#3949AB"
         text-color="white">
         <v-avatar left>
@@ -138,5 +140,22 @@
 .v-main__wrap {
   width: 90%;
   margin: 0 auto;
+}
+
+@media screen and (max-width:500px){
+  .link-font-size {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width:400px){
+  .title-font-size {
+    margin-left: 10px;
+    font-size: 16px;
+  }
+
+  .sm-display-none {
+    display: none;
+  }
 }
 </style>

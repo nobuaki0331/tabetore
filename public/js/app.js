@@ -2259,6 +2259,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     source: String,
@@ -2472,7 +2474,7 @@ __webpack_require__.r(__webpack_exports__);
         name: 'モチベーションが上がる動画',
         path: 'https://www.youtube.com/embed/QBwsdG2sJmU'
       }, {
-        name: 'モチベーションが上がる音楽g',
+        name: 'モチベーションが上がる音楽',
         path: 'https://www.youtube.com/embed/8VjWRL8JxLs'
       }, {
         name: 'モチベーションが上がる筋トレ動画',
@@ -7639,7 +7641,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.v-application a[data-v-7c67d090] {\n  color : inherit;\n}\n.theme--dark.v-application[data-v-7c67d090] {\n  background: white !important;\n}\n.v-main__wrap[data-v-7c67d090] {\n  width: 90%;\n  margin: 0 auto;\n}\n", ""]);
+exports.push([module.i, "\n.v-application a[data-v-7c67d090] {\n  color : inherit;\n}\n.theme--dark.v-application[data-v-7c67d090] {\n  background: white !important;\n}\n.v-main__wrap[data-v-7c67d090] {\n  width: 90%;\n  margin: 0 auto;\n}\n@media screen and (max-width:500px){\n.link-font-size[data-v-7c67d090] {\n    font-size: 11px;\n}\n}\n@media screen and (max-width:400px){\n.title-font-size[data-v-7c67d090] {\n    margin-left: 10px;\n    font-size: 16px;\n}\n.sm-display-none[data-v-7c67d090] {\n    display: none;\n}\n}\n", ""]);
 
 // exports
 
@@ -7734,7 +7736,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.text-color[data-v-5e8280ea] {\n  color: black;\n}\n\n", ""]);
+exports.push([module.i, "\n.text-color[data-v-5e8280ea] {\n  color: black;\n}\n@media screen and (max-width:367px){\n.btn-mt-sm[data-v-5e8280ea] {\n    margin-top: 10px;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -40791,22 +40793,30 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("v-icon", { staticClass: "mx-4", attrs: { large: "" } }, [
-            _vm._v("\n      mdi-youtube\n    ")
-          ]),
+          _c(
+            "v-icon",
+            { staticClass: "sm-display-none mx-4", attrs: { large: "" } },
+            [_vm._v("\n      mdi-youtube\n    ")]
+          ),
           _vm._v(" "),
-          _c("v-toolbar-title", { staticClass: "mr-12 align-center" }, [
-            _c("span", { staticClass: "title" }, [_vm._v("食べトレ")])
-          ]),
+          _c(
+            "v-toolbar-title",
+            { staticClass: "title-font-size align-center" },
+            [_vm._v("\n      食べトレ\n    ")]
+          ),
           _vm._v(" "),
           _c("v-spacer"),
           _vm._v(" "),
-          _c("a", { attrs: { href: "/logout" } }, [_vm._v("ログアウト")]),
+          _c(
+            "a",
+            { staticClass: "link-font-size", attrs: { href: "/logout" } },
+            [_vm._v("ログアウト")]
+          ),
           _vm._v(" "),
           _c(
             "v-chip",
             {
-              staticClass: "ma-2",
+              staticClass: "link-font-size ma-2",
               attrs: { color: "#3949AB", "text-color": "white" },
               on: { click: _vm.transition }
             },
@@ -40947,21 +40957,25 @@ var render = function() {
       "div",
       { staticClass: "row" },
       _vm._l(_vm.movieItems, function(item) {
-        return _c("div", { key: item.id, staticClass: "content-item col-6" }, [
-          _c("h4", [_vm._v(_vm._s(item.name))]),
-          _vm._v(" "),
-          _c("iframe", {
-            attrs: {
-              width: "560",
-              height: "315",
-              src: item.path,
-              frameborder: "0",
-              allow:
-                "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
-              allowfullscreen: ""
-            }
-          })
-        ])
+        return _c(
+          "div",
+          { key: item.id, staticClass: "content-item col-sm-12 col-lg-6" },
+          [
+            _c("h4", [_vm._v(_vm._s(item.name))]),
+            _vm._v(" "),
+            _c("iframe", {
+              attrs: {
+                width: "560",
+                height: "315",
+                src: item.path,
+                frameborder: "0",
+                allow:
+                  "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+                allowfullscreen: ""
+              }
+            })
+          ]
+        )
       }),
       0
     )
@@ -41469,7 +41483,7 @@ var render = function() {
         _c(
           "v-btn",
           {
-            staticClass: "mr-4",
+            staticClass: "btn-mt-sm mr-4",
             attrs: { color: "primary" },
             on: {
               click: function($event) {
