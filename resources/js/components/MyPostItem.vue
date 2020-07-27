@@ -95,35 +95,35 @@ export default {
   },
 
   methods: {
-    fetchUserItem() {
-      const userId = this.userInfo.id
+    async fetchUserItem() {
+      try {
+        const userId = this.userInfo.id
+        const res = await axios.get(`api/mypage/post/${userId}`);
 
-      axios.get(`api/mypage/post/${userId}`)
-      .then( res => {
-        this.myItems = res.data
-      })
-      .catch( error => console.log(error))
-
+        this.myItems = res.data;
+      } catch (error) {
+        console.log(error)
+      }
     },
 
     returnPage() {
       this.$router.back()
     },
 
-    removePostItem(id=null) {
+    async removePostItem(id=null) {
       const result = confirm('投稿を削除しますか？');
 
       if (result) {
-        axios.delete(`api/mypage/post/${id}`)
-        .then( () => {
+        try {
+          await axios.delete(`api/mypage/post/${id}`)
           alert('削除成功')
 
           this.fetchUserItem()
-        })
-        .catch( error => {
-          console.log(error)
-          alert('削除できませんでした...')
-        })
+
+        } catch (error) {
+            console.log(error)
+            alert('削除できませんでした...')
+        }
       }
     }
   }

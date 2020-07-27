@@ -75,7 +75,6 @@ export default {
       },
 
       checkbox: '',
-      newItems: []
     }
   },
 
@@ -84,22 +83,20 @@ export default {
       this.$refs.clear_form.reset()
     },
 
-    fetchItem(){
-      axios.post('api/post/', {
-        user_id: this.formData.id,
-        title: this.formData.title,
-        content: this.formData.content,
-      })
-      .then((res) => {
-        this.newItems = res.data
-      })
-      .catch((error) => console.log(error))
-      .finally(()=> {
-        alert('口コミを投稿しました')
+    async fetchItem(){
+      try {
+        await axios.post('api/post/', {
+          user_id: this.formData.id,
+          title: this.formData.title,
+          content: this.formData.content,
+        })
 
-        // フォームデータの初期化
+        alert('口コミ投稿しました')
+
         this.Intialize()
-      })
+      } catch(error) {
+        console.log(error)
+      }
     }
   }
 }

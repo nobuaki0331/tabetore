@@ -93,23 +93,19 @@ export default {
       this.$router.back()
     },
 
-    fetchItem(){
-      axios.get('api/mypage').then(res => {
-        console.log(res)
-      })
-    },
-
-    updateUserInfo() {
-      axios.post(`api/mypage/${this.formData.id}`, {
+    async updateUserInfo() {
+      try {
+        await axios.post(`api/mypage/${this.formData.id}`, {
         id: this.formData.id,
         name: this.formData.name,
         email: this.formData.email,
-      }).then(()=>{
+        })
+
         alert('更新が成功しました')
-      }).catch((e) => {
-        console.log(e)
+      } catch(error) {
+        console.log(error)
         alert('更新に失敗しました')
-      })
+      }
     },
 
     transitionPage() {

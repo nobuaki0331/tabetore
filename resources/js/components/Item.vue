@@ -48,10 +48,13 @@
     },
 
     methods: {
-      fetchItem() {
-        axios.get('api/item').then(res => {
+      async fetchItem() {
+        try {
+          const res = await axios.get('api/item')
           this.postItems = res.data
-        })
+        } catch (error) {
+          console.log(error)
+        }
       },
 
       //　降順ソート
