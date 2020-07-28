@@ -25,4 +25,10 @@ class PostController extends Controller
         $posts = Post::all();
         return $posts;
     }
+
+    public function apiIndex(Request $request) {
+        $userId = $request->user_id;
+
+        return Post::where('user_id',$userId)->get();
+    }
 }

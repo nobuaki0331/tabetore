@@ -5,14 +5,34 @@
 
   <div class="content">
     <div class="m-2">
-      <v-btn
-        @click="onClickIdDesc"
-        text color="primary"
-        small>IDで降順</v-btn>
-      <v-btn
-        @click="onClickIdAsc"
-        text color="error"
-        small>IDで昇順</v-btn>
+      <form>
+        <input
+          v-model="user_id"
+          type="text"
+          class="input-postId"
+          style="width: 160px; height: 30px; padding: 5px;"
+          placeholder="ユーザーIDで検索する" >
+
+        <v-btn
+          @click.prevent="searchData"
+          small color="primary">検索</v-btn>
+
+        <v-btn
+          @click.prevent="clearData"
+          small color="gray">検索クリア</v-btn>
+
+      </form>
+
+      <div class="mt-8">
+        <v-btn
+          @click="onClickIdDesc"
+          text color="primary"
+          small>IDで降順</v-btn>
+        <v-btn
+          @click="onClickIdAsc"
+          text color="error"
+          small>IDで昇順</v-btn>
+      </div>
     </div>
     <v-simple-table light>
       <thead>
@@ -39,7 +59,9 @@
   export default {
     data () {
       return {
-        postItems: {},
+        postItems: [],
+
+        user_id: '',
       }
     },
 
@@ -55,6 +77,20 @@
         } catch (error) {
           console.log(error)
         }
+      },
+
+      async searchData () {
+        try {
+          const res = await axios.get('api/item/keywords?user_id=' + this.user_id);
+          this.postItems = res.data;
+
+        } catch (error) {
+          console.log(error)
+        }
+      },
+
+      clearData() {
+        this.fetchItem()
       },
 
       //　降順ソート
@@ -91,5 +127,9 @@
 
 tbody > tr > td {
   padding: 15px !important;
+}
+
+input {
+  border: 1px solid gray;
 }
 </style>

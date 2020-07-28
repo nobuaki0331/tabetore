@@ -2379,10 +2379,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      postItems: {}
+      postItems: [],
+      user_id: ''
     };
   },
   mounted: function mounted() {
@@ -2420,6 +2441,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee, null, [[0, 7]]);
       }))();
+    },
+    searchData: function searchData() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return axios.get('api/item/keywords?user_id=' + _this2.user_id);
+
+              case 3:
+                res = _context2.sent;
+                _this2.postItems = res.data;
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 7]]);
+      }))();
+    },
+    clearData: function clearData() {
+      this.fetchItem();
     },
     //　降順ソート
     onClickIdDesc: function onClickIdDesc() {
@@ -7660,7 +7716,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.content[data-v-2c619f04] {\n  width: 90%;\n  margin: 0 auto;\n}\n.text-positon[data-v-2c619f04] {\n  text-align: center;\n}\ntbody > tr > td[data-v-2c619f04] {\n  padding: 15px !important;\n}\n", ""]);
+exports.push([module.i, "\n.content[data-v-2c619f04] {\n  width: 90%;\n  margin: 0 auto;\n}\n.text-positon[data-v-2c619f04] {\n  text-align: center;\n}\ntbody > tr > td[data-v-2c619f04] {\n  padding: 15px !important;\n}\ninput[data-v-2c619f04] {\n  border: 1px solid gray;\n}\n", ""]);
 
 // exports
 
@@ -40873,30 +40929,89 @@ var render = function() {
       "div",
       { staticClass: "content" },
       [
-        _c(
-          "div",
-          { staticClass: "m-2" },
-          [
-            _c(
-              "v-btn",
-              {
-                attrs: { text: "", color: "primary", small: "" },
-                on: { click: _vm.onClickIdDesc }
-              },
-              [_vm._v("IDで降順")]
-            ),
-            _vm._v(" "),
-            _c(
-              "v-btn",
-              {
-                attrs: { text: "", color: "error", small: "" },
-                on: { click: _vm.onClickIdAsc }
-              },
-              [_vm._v("IDで昇順")]
-            )
-          ],
-          1
-        ),
+        _c("div", { staticClass: "m-2" }, [
+          _c(
+            "form",
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user_id,
+                    expression: "user_id"
+                  }
+                ],
+                staticClass: "input-postId",
+                staticStyle: { width: "160px", height: "30px", padding: "5px" },
+                attrs: { type: "text", placeholder: "ユーザーIDで検索する" },
+                domProps: { value: _vm.user_id },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.user_id = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { small: "", color: "primary" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.searchData($event)
+                    }
+                  }
+                },
+                [_vm._v("検索")]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { small: "", color: "gray" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.clearData($event)
+                    }
+                  }
+                },
+                [_vm._v("検索クリア")]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mt-8" },
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: { text: "", color: "primary", small: "" },
+                  on: { click: _vm.onClickIdDesc }
+                },
+                [_vm._v("IDで降順")]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { text: "", color: "error", small: "" },
+                  on: { click: _vm.onClickIdAsc }
+                },
+                [_vm._v("IDで昇順")]
+              )
+            ],
+            1
+          )
+        ]),
         _vm._v(" "),
         _c("v-simple-table", { attrs: { light: "" } }, [
           _c("thead", [
