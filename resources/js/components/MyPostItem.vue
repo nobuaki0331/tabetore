@@ -31,7 +31,7 @@
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title>ユーザーID:{{ item.id }}</v-list-item-title>
+            <v-list-item-title>{{ userInfo.name }}</v-list-item-title>
           </v-list-item-content>
 
           <v-row

@@ -41063,7 +41063,7 @@ var render = function() {
                       "v-list-item-content",
                       [
                         _c("v-list-item-title", [
-                          _vm._v("ユーザーID:" + _vm._s(item.id))
+                          _vm._v(_vm._s(_vm.userInfo.name))
                         ])
                       ],
                       1
