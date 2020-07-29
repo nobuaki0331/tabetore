@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\PostInput;
 
 class PostController extends Controller
 {
@@ -15,7 +16,7 @@ class PostController extends Controller
 
     }
 
-    public function store(PostRequest $request) {
+    public function store(PostInput $request) {
         $post = new Post;
         $post->user_id = $request->user_id;
         $post->content = $request->content;
