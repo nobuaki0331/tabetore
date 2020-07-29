@@ -21,9 +21,6 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->title = $request->title;
         $post->save();
-
-        $posts = Post::all();
-        return $posts;
     }
 
     public function apiIndex(Request $request) {
