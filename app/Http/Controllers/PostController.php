@@ -27,8 +27,25 @@ class PostController extends Controller
     }
 
     public function apiIndex(Request $request) {
-        $userId = $request->user_id;
+        $_user_id = $request->user_id;
+        $_title = $request->title;
+        $_content = $request->content;
 
-        return Post::where('user_id',$userId)->get();
+        $query = Post::query();
+
+        if (!empty($_user_id)) {
+            $query->where('user_id',$_user_id);
+        }
+
+        if (!empty($_title)) {
+            $query->where('title','like','%'.$_title.'%');
+        }
+
+        if (!empty($_content)) {
+            $query->where('content', 'like', '%'.$_content.'%');
+        }
+
+        $_post_items = $query->get();
+        return $_post_items;
     }
 }

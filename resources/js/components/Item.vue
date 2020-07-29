@@ -9,9 +9,20 @@
         <input
           v-model="user_id"
           type="text"
-          class="input-postId"
           style="width: 160px; height: 30px; padding: 5px;"
           placeholder="ユーザーIDで検索する" >
+
+        <input
+          v-model="title"
+          type="text"
+          style="width: 160px; height: 30px; padding: 5px;"
+          placeholder="タイトルで検索する" >
+
+        <input
+          v-model="content"
+          type="text"
+          style="width: 160px; height: 30px; padding: 5px;"
+          placeholder="投稿内容で検索する" >
 
         <v-btn
           @click.prevent="searchData"
@@ -62,6 +73,8 @@
         postItems: [],
 
         user_id: '',
+        title: '',
+        content: '',
       }
     },
 
@@ -81,7 +94,13 @@
 
       async searchData () {
         try {
-          const res = await axios.get('api/item/keywords?user_id=' + this.user_id);
+          const params = {
+            // 検索のパラメータを指定
+            user_id: this.user_id,
+            title: this.title,
+            content: this.content
+          }
+          const res = await axios.get('api/item/keywords',{ params });
           this.postItems = res.data;
 
         } catch (error) {
@@ -90,6 +109,10 @@
       },
 
       clearData() {
+        this.user_id = ''
+        this.title = ''
+        this.content = ''
+
         this.fetchItem()
       },
 
