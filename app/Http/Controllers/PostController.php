@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Http\Requests\PostRequest;
 use App\Http\Requests\PostInput;
 
 class PostController extends Controller

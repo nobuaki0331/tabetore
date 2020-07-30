@@ -17,6 +17,12 @@
         :type="type"
         @input="updateValue ">
     </div>
+
+    <div
+      v-if="errors"
+      class="invalid-feedback d-block pl-5">
+      {{ errors[0] }}
+    </div>
   </div>
 </template>
 
@@ -64,6 +70,11 @@ export default {
     requiredLine: {
       type: Boolean,
       default: false,
+    },
+
+    errors: {
+      type: Array,
+      default: undefined,
     }
   },
 

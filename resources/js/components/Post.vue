@@ -12,6 +12,7 @@
         name="id"
         label="登録ID"
         placeholder="登録ID"
+        :errors="errors.user_id"
         required-line
         required />
 
@@ -20,6 +21,7 @@
         name="title"
         label="タイトル"
         placeholder="タイトル"
+        :errors="errors.title"
         required-line
         required />
 
@@ -28,6 +30,7 @@
         name="content"
         label="投稿内容"
         placeholder="投稿内容"
+        :errors="errors.content"
         required-line
         required />
 
@@ -75,6 +78,7 @@ export default {
       },
 
       checkbox: '',
+      errors: {},
     }
   },
 
@@ -94,8 +98,8 @@ export default {
         alert('口コミ投稿しました')
 
         this.Intialize()
-      } catch(error) {
-        console.log(error)
+      } catch(e) {
+        this.errors = e.response.data.errors
       }
     }
   }

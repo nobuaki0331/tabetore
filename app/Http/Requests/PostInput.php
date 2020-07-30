@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostRequest extends FormRequest
+class PostInput extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,6 +27,20 @@ class PostRequest extends FormRequest
             'user_id' => 'required',
             'title' => 'required',
             'content' => 'required',
+        ];
+    }
+
+    /**
+     * バリデーションエラーのカスタム属性の取得
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'user_id' => '登録ID',
+            'title' => 'タイトル',
+            'content' => '投稿内容',
         ];
     }
 }
