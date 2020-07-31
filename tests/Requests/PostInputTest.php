@@ -31,9 +31,9 @@ class PostInputTest extends ValidationTestCase
                 true,
             ],
 
-            // 'user_idは存在しない' => [
-            //     false, [], 'user_id',
-            // ],
+            'user_idは存在しない' => [
+                false, [], 'user_id',
+            ],
 
             'titleが存在しない' => [
                 false, [], 'title',
