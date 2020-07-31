@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserUpdated;
 use Illuminate\Support\Facades\Auth;
 
 class MypageController extends Controller
@@ -13,9 +14,8 @@ class MypageController extends Controller
         return view('top');
     }
 
-    public function update(Request $request, $id) {
+    public function update(UserUpdated $request, $id) {
         $user = User::find($id);
-        $user->id = $request->id;
         $user->name = $request->name;
         $user->email = $request->email;
 

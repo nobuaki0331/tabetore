@@ -19,6 +19,7 @@
         name="name"
         label="ユーザーネーム"
         placeholder="ユーザーネーム"
+        :errors="errors.name"
         required />
 
       <input-text
@@ -26,6 +27,7 @@
         name="email"
         label="メールアドレス"
         placeholder="メールアドレス"
+        :errors="errors.email"
         required />
 
       <v-btn
@@ -79,6 +81,8 @@ export default {
         name: '',
         email: '',
       },
+
+      errors: {},
     }
   },
 
@@ -102,9 +106,8 @@ export default {
         })
 
         alert('更新が成功しました')
-      } catch(error) {
-        console.log(error)
-        alert('更新に失敗しました')
+      } catch(e) {
+        this.errors = e.response.data.errors
       }
     },
 
