@@ -18,10 +18,13 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Auth::routes();
+// 下記はプッシュしないこと
+Route::view('/sample', 'sample');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/newitem', 'NewItemController@index')->name('newitem');
 Route::get('/item', 'NewItemController@index')->name('newitem');
+Route::get('/item/{id}', 'NewItemController@show');
 Route::get('/post', 'NewItemController@index')->name('newitem');
 Route::get('/gallery', 'NewItemController@index')->name('newitem');
 Route::get('/movie', 'NewItemController@index')->name('newitem');

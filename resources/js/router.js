@@ -1,6 +1,7 @@
 import Router from 'vue-router'
 import NewItem from './components/NewItem.vue'
 import Item from './components/Item.vue'
+import DetailItem from './components/DetailItem.vue'
 import Post from './components/Post.vue'
 import Gallery from './components/Gallery.vue'
 import Movie from './components/Movie.vue'
@@ -24,6 +25,11 @@ export default new Router({
       path: '/item',
       name: 'item',
       component: Item
+    },
+    {
+      path: '/item/:id',
+      name: 'detail-item',
+      component: DetailItem
     },
     {
       path: '/post',

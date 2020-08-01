@@ -48,10 +48,10 @@
     <v-simple-table light>
       <thead>
         <tr>
-          <th
-            class="text-left">ID</th>
+          <th class="text-left">ID</th>
           <th class="text-left">タイトル</th>
           <th class="text-left">投稿内容</th>
+          <th class="text-left">詳細</th>
         </tr>
       </thead>
       <tbody>
@@ -59,6 +59,9 @@
           <td>{{ item.user_id }}</td>
           <td>{{ item.title }}</td>
           <td>{{ item.content }}</td>
+          <td>
+            <v-btn @click="detailConntent(item.id)">詳細</v-btn>
+          </td>
         </tr>
       </tbody>
     </v-simple-table>
@@ -114,6 +117,10 @@
         this.content = ''
 
         this.fetchItem()
+      },
+
+      detailConntent(postId) {
+        this.$router.push({ name: 'detail-item', params: { id : postId }})
       },
 
       //　降順ソート
