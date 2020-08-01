@@ -116,7 +116,7 @@ export default {
       if (result) {
         try {
           await axios.delete(`api/mypage/post/${id}`)
-          alert('削除成功')
+          alert('削除成功しました')
 
           this.fetchUserItem()
 

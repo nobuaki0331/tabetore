@@ -22,6 +22,7 @@ Route::group(['middleware' => 'api'], function() {
     Route::get('item', 'PostController@index');
     Route::get('item/keywords', 'PostController@apiIndex');
     Route::post('post', 'PostController@store');
+    Route::post('post/upload', 'PostController@storeUpload');
     Route::get('mypage/post/{userid}', 'MypageController@apiIndex');
     Route::post('mypage/{id}', 'MypageController@update');
     Route::delete('mypage/post/{postId}', 'MypageController@apiDestroy');

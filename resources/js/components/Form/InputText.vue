@@ -96,5 +96,6 @@ export default {
 
 .form-undeline {
   text-decoration: underline;
+  text-decoration-color: red;
 }
 </style>

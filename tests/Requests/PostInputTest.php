@@ -21,6 +21,7 @@ class PostInputTest extends ValidationTestCase
             'user_id' => '1',
             'title' => 'ホゲ',
             'content' => 'ホゲホゲ',
+            'remarks' => 'ホゲホゲホゲ',
         ];
     }
 
@@ -42,6 +43,10 @@ class PostInputTest extends ValidationTestCase
             'contentが存在しない' => [
                 false, [], 'content',
             ],
+
+            'remarksが存在しない' => [
+                true, [], 'remarks',
+            ]
         ];
     }
 }

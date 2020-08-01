@@ -20,7 +20,7 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-subheader class="mt-4 grey--text text--darken-1">SUBSCRIPTIONS</v-subheader>
+        <v-subheader class="mt-4 grey--text text--darken-1">SUPPORTMEMBERS</v-subheader>
         <v-list>
           <v-list-item
             v-for="item in items2"

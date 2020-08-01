@@ -13,6 +13,7 @@
         :value="value"
         :disabled="disabled"
         class="form-control"
+        :class="{ 'text-height' : textHeight }"
         :placeholder="placeholder"
         :type="type"
         @input="updateValue" />
@@ -74,6 +75,11 @@ export default {
     errors: {
       type: Array,
       dfault: undefined,
+    },
+
+    textHeight: {
+      type: Boolean,
+      default: false,
     }
   },
 
@@ -98,5 +104,10 @@ export default {
 
 .form-undeline {
   text-decoration: underline;
+  text-decoration-color: red;
+}
+
+.text-height {
+  height: 140px;
 }
 </style>

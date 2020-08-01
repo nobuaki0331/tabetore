@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostInput;
+use App\Http\Requests\FileUpload;
 
 class PostController extends Controller
 {
@@ -17,9 +18,12 @@ class PostController extends Controller
 
     public function store(PostInput $request) {
         $post = new Post;
+
         $post->user_id = $request->user_id;
         $post->content = $request->content;
         $post->title = $request->title;
+        $post->remarks = $request->remarks;
+
         $post->save();
     }
 
@@ -44,5 +48,18 @@ class PostController extends Controller
 
         $_post_items = $query->get();
         return $_post_items;
+    }
+
+    public function storeUpload(FileUpload $request) {
+        dd(request()->file);
+
+        if(request()->file) {
+            $file_name = time() . '.' . request()->file->getClientOriginalName();
+            request()->file->storeAs('public', $file_name);
+
+            $post = new Post();
+            $post->file_path = 'storage/' . $file_name;
+            $post->save();
+        }
     }
 }

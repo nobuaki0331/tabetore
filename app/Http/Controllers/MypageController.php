@@ -29,6 +29,6 @@ class MypageController extends Controller
     }
 
     public function apiDestroy($postId) {
-        Post::find($apipostId)->delete();
+        Post::find($postId)->delete();
     }
 }

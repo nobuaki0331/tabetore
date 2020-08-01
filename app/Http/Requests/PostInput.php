@@ -27,6 +27,7 @@ class PostInput extends FormRequest
             'user_id' => 'required',
             'title' => 'required',
             'content' => 'required',
+            'remarks' => 'nullable',
         ];
     }
 
@@ -41,6 +42,7 @@ class PostInput extends FormRequest
             'user_id' => '登録ID',
             'title' => 'タイトル',
             'content' => '投稿内容',
+            'remarks' => '備考欄',
         ];
     }
 }
