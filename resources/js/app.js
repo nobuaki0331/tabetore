@@ -10,7 +10,14 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css'
 import NewItem from './components/NewItem'
-// import FooBar from './components/FooBar'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCoffee, faCheck, faGrinHearts } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+Vue.use(VueRouter)
+library.add(faCoffee, faCheck, faGrinHearts)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 require('./bootstrap');
 

@@ -17,13 +17,9 @@
         <v-row
           align="center"
           class="mx-0">
-          <v-rating
-            :value="4.5"
-            color="amber"
-            dense
-            half-increments
-            readonly
-            size="14"></v-rating>
+          <font-awesome-icon
+            icon="grin-hearts"
+            class="icon-style"/>
 
           <div class="grey--text ml-4">4.5 (413)←ここにはいいね、の数を入れる</div>
         </v-row>
@@ -83,5 +79,10 @@
 
 .content-second-title {
   color: white;
+}
+
+.icon-style {
+  color: red;
+  font-size: 2rem;
 }
 </style>
