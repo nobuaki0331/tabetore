@@ -27,6 +27,13 @@ class PostController extends Controller
         $post->save();
     }
 
+    public function show(Post $post, $id) {
+        $num = (int)$id;
+        $postItem = Post::find($num);
+
+        return $postItem;
+    }
+
     public function apiIndex(Request $request) {
         $_user_id = $request->user_id;
         $_title = $request->title;

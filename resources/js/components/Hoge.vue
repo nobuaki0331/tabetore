@@ -7,7 +7,7 @@
       <v-list dense>
         <v-list-item
           v-for="item in items"
-          :key="item.text"
+          :key="item.id"
           link>
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
@@ -15,7 +15,7 @@
           <v-list-item-content>
             <v-list-item-title>
 
-              <router-link :to="item.path">{{ item.text }}</router-link>
+              <router-link :to="{ name: item.path }">{{ item.text }}</router-link>
 
             </v-list-item-title>
           </v-list-item-content>
@@ -121,7 +121,7 @@
     methods: {
       transition() {
         if (this.$route.path !== '/mypage') {
-          this.$router.push('mypage')
+          this.$router.push({ name: 'mypage' })
         }
       }
     }

@@ -11,11 +11,6 @@ import MyPostItem from './components/MyPostItem.vue'
 export default new Router({
   mode: 'history',
   routes: [
-    // {
-    //   path: '/hoge',
-    //   name: 'hoge',
-    //   component: Hoge
-    // },
     {
       path: '/newitem',
       name: 'newitem',
