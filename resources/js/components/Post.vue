@@ -1,9 +1,11 @@
 
 <template>
-  <div class="p-5">
-
-    <h3>商品の口コミを投稿する</h3>
-
+  <div class="pl-5">
+    <content-title>
+      <template v-slot="slotProps">
+        <h3>{{ slotProps.data.title1 }}</h3>
+      </template>
+    </content-title>
     <form
       ref="clear_form"
       enctype="multipart/form-data"
@@ -16,7 +18,6 @@
         :errors="errors.user_id"
         required-line
         required />
-
       <input-text
         v-model="formData.title"
         name="title"
@@ -25,10 +26,8 @@
         :errors="errors.title"
         required-line
         required />
-
       <file-upload
         @select-file="fileSelected"/>
-
       <text-area
         v-model="formData.content"
         name="content"
@@ -37,7 +36,6 @@
         :errors="errors.content"
         required-line
         required />
-
       <text-area
         v-model="formData.remarks"
         name="remarks"
@@ -45,19 +43,16 @@
         placeholder="備考欄"
         textHeight
         :errors="errors.remarks" />
-
       <v-checkbox
         v-model="checkbox"
         label="Do you agree?"
         required />
-
       <v-btn
         color="error"
         class="mr-4"
         @click="Intialize">
         入力をやり直す
       </v-btn>
-
       <v-btn
         @click.prevent="onClickSubmit"
         color="primary"
@@ -69,6 +64,7 @@
 </template>
 
 <script>
+import ContentTitle from './ContentTitle.vue'
 import InputText from './Form/InputText.vue'
 import TextArea from './Form/TextArea.vue'
 import FileUpload from './Form/FileUpload.vue'
@@ -76,13 +72,12 @@ import axios from 'axios';
 
 export default {
   name: 'PostPage',
-
   components: {
+    ContentTitle,
     InputText,
     TextArea,
     FileUpload,
   },
-
   data() {
     return {
       formData: {
@@ -91,19 +86,15 @@ export default {
         content: '',
         remarks: '',
       },
-
       checkbox: '',
       errors: {},
-
       fileInfo: '',
     }
   },
-
   methods: {
     Intialize() {
       this.$refs.clear_form.reset()
     },
-
     async PostItem(){
       try {
         await axios.post('api/post/', {
@@ -112,11 +103,11 @@ export default {
           content: this.formData.content,
           remarks: this.formData.remarks,
         })
+        alert('口コミを投稿しました')
       } catch(e) {
         this.errors = e.response.data.errors
       }
     },
-
     // 画像ファイル用api
     async filePostItem(){
       try {
@@ -125,15 +116,11 @@ export default {
         this.errors = e.response.data.errors
       }
     },
-
     onClickSubmit() {
       this.PostItem()
-      // this.filePostItem()
-
       // 初期化
       this.Intialize()
     },
-
     fileSelected(fileInfo) {
       this.fileInfo = fileInfo
     }
@@ -145,11 +132,9 @@ export default {
 .text-color {
   color: black;
 }
-
 @media screen and (max-width:367px){
   .btn-mt-sm {
     margin-top: 10px;
   }
 }
-
 </style>

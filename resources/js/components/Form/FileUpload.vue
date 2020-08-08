@@ -15,12 +15,6 @@
 <script>
 export default {
   name: 'FileUpload',
-
-  data() {
-    return {
-    }
-  },
-
   methods: {
     fileSelected(e) {
       this.$emit('select-file', e.target.files[0])
@@ -33,13 +27,11 @@ export default {
 input[type="file"] {
   color: black;
 }
-
 .col-form-label {
   color: black;
   text-align: center;
   line-height: 3;
 }
-
 @media screen and (max-width:420px){
   input[type="file"] {
     width: 100%;

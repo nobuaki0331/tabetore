@@ -1,22 +1,32 @@
 <template>
   <div class="container pl-5">
-    <h3 class="text-center">お気に入りMOVIE</h3>
+    <content-title>
+      <template v-slot="slotProps">
+        <h3>{{ slotProps.data.title4 }}</h3>
+      </template>
+    </content-title>
     <div class="row">
       <div
         v-for="item in movieItems"
         :key="item.id"
         class="content-item col-sm-12 col-lg-6">
         <h4>{{ item.name }}</h4>
-        <iframe width="560" height="315" :src="item.path" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe
+          width="560"
+          height="315"
+          :src="item.path"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ContentTitle from './ContentTitle.vue'
+
 export default {
   name: 'Movie',
-
   data() {
     return {
       movieItems: [
@@ -29,9 +39,5 @@ export default {
       ]
     }
   }
-
 }
 </script>
-
-<style scoped>
-</style>
