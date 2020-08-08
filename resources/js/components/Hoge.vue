@@ -65,7 +65,11 @@
         mdi-youtube
       </v-icon>
       <v-toolbar-title class="title-font-size align-center">
-        食べトレ
+        <a
+          class="title-border"
+          href="/">
+          食べトレ
+        </a>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <a
@@ -153,5 +157,8 @@ export default {
   .sm-display-none {
     display: none;
   }
+}
+.title-border:hover {
+  text-decoration: none;
 }
 </style>

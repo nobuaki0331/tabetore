@@ -15,8 +15,10 @@
           align="center"
           class="mx-0">
           <font-awesome-icon
+            @click.prevent="onIconClicked"
             icon="grin-hearts"
-            class="icon-style"/>
+            :aria-disabled="disabled"
+            :class="{ 'icon-color': isLikedColor , 'icon-size' : isLikedSize }"/>
           <div class="grey--text ml-4">4.5 (413)←ここにはいいね、の数を入れる</div>
         </v-row>
         <div class="my-4 subtitle-1">
@@ -43,6 +45,9 @@ export default {
       selection: 1,
       id: this.$route.params.id,
       postItems: {},
+      isLikedSize: true,
+      isLikedColor: false,
+      disabled: false,
     }
   },
   created() {
@@ -57,6 +62,11 @@ export default {
         console.log(error)
       }
     },
+    onIconClicked() {
+      console.log('クリツクしました')
+      this.isLikedColor = true
+      this.disabled = true
+    },
   },
 }
 </script>
@@ -69,8 +79,10 @@ export default {
 .content-second-title {
   color: white;
 }
-.icon-style {
+.icon-color {
   color: red;
+}
+.icon-size {
   font-size: 2rem;
 }
 </style>
