@@ -63,7 +63,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in postItems" :key="item.id">
+          <tr v-for="item in getItems" :key="item.id">
             <td>{{ item.user_id }}</td>
             <td>{{ item.title }}</td>
             <td>{{ item.content }}</td>
@@ -73,30 +73,64 @@
           </tr>
         </tbody>
       </v-simple-table>
+
+      <paginate
+        class="mt-5 justify-content-center"
+        :page-count="getPageCount"
+        :page-range="3"
+        :margin-pages="2"
+        :click-handler="clickCallback"
+        :prev-text="'＜'"
+        :next-text="'＞'"
+        :container-class="'pagination'"
+        :page-class="'page-item'"
+        :page-link-class="'page-link'"
+        :prev-class="'page-item'"
+        :prev-link-class="'page-link'"
+        :next-class="'page-item'"
+        :next-link-class="'page-link'" />
     </div>
   </div>
 </template>
 
 <script>
 import ContentTitle from './ContentTitle.vue'
+import Paginate from 'vuejs-paginate'
 
 export default {
   name: 'Item',
   components: {
     ContentTitle,
+    Paginate,
   },
   data () {
     return {
       postItems: [],
+      parPage: 5,
+      currentPage: 1,
       user_id: '',
       title: '',
       content: '',
     }
   },
+  computed: {
+    getItems() {
+      let current = this.currentPage * this.parPage;
+      let start = current - this.parPage;
+      return this.postItems.slice(start, current)
+    },
+    getPageCount: function() {
+      return Math.ceil(this.postItems.length / this.parPage);
+    },
+  },
   mounted() {
     this.fetchItem()
   },
   methods: {
+    clickCallback (pageNum) {
+      this.currentPage = Number(pageNum);
+    },
+
     async fetchItem() {
       try {
         const res = await axios.get('api/item')
@@ -156,5 +190,9 @@ tbody > tr > td {
 }
 input {
   border: 1px solid gray;
+}
+a {
+  padding: 10px;
+  border: 1px solid black;
 }
 </style>
