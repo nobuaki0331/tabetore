@@ -60,6 +60,7 @@
             <th class="text-left">タイトル</th>
             <th class="text-left">投稿内容</th>
             <th class="text-left">詳細</th>
+            <th class="text-left">お気に入り</th>
           </tr>
         </thead>
         <tbody>
@@ -69,6 +70,12 @@
             <td>{{ item.content }}</td>
             <td>
               <v-btn @click="detailConntent(item.id)">詳細</v-btn>
+            </td>
+            <td>
+              <font-awesome-icon
+                icon="grin-hearts"
+                id="icon"
+                class="icon-style" />
             </td>
           </tr>
         </tbody>
@@ -183,5 +190,8 @@ input {
 a {
   padding: 10px;
   border: 1px solid black;
+}
+.icon-style {
+  font-size: 1.6rem;
 }
 </style>
