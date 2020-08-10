@@ -75,27 +75,18 @@
       </v-simple-table>
 
       <paginate
-        class="mt-5 justify-content-center"
-        :page-count="getPageCount"
-        :page-range="3"
-        :margin-pages="2"
-        :click-handler="clickCallback"
-        :prev-text="'＜'"
-        :next-text="'＞'"
-        :container-class="'pagination'"
-        :page-class="'page-item'"
-        :page-link-class="'page-link'"
-        :prev-class="'page-item'"
-        :prev-link-class="'page-link'"
-        :next-class="'page-item'"
-        :next-link-class="'page-link'" />
+        @click-page="onClickPage"
+        :items="postItems"
+        :per-page="parPage"
+        prev-text="＜"
+        next-text="＞"/>
     </div>
   </div>
 </template>
 
 <script>
 import ContentTitle from './ContentTitle.vue'
-import Paginate from 'vuejs-paginate'
+import Paginate from './Paginate.vue'
 
 export default {
   name: 'Item',
@@ -106,8 +97,8 @@ export default {
   data () {
     return {
       postItems: [],
-      parPage: 5,
       currentPage: 1,
+      parPage: 5,
       user_id: '',
       title: '',
       content: '',
@@ -119,18 +110,16 @@ export default {
       let start = current - this.parPage;
       return this.postItems.slice(start, current)
     },
-    getPageCount: function() {
-      return Math.ceil(this.postItems.length / this.parPage);
-    },
   },
   mounted() {
     this.fetchItem()
   },
   methods: {
-    clickCallback (pageNum) {
-      this.currentPage = Number(pageNum);
+    onClickPage(currentPage) {
+      console.log(typeof currentPage)
+      console.log(currentPage)
+      this.currentPage = currentPage
     },
-
     async fetchItem() {
       try {
         const res = await axios.get('api/item')
