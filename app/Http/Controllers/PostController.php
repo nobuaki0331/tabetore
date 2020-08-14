@@ -13,7 +13,6 @@ class PostController extends Controller
         $postItem = Post::all();
 
         return $postItem;
-
     }
 
     public function store(PostInput $request) {
