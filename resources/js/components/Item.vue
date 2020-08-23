@@ -10,6 +10,12 @@
     </content-title>
     <div class="content">
       <div class="m-2">
+        <input
+          v-model="highlight"
+          type="text"
+          label="ハイライト検索"
+          style="width: 215px; height: 30px; margin-bottom: 10px; padding: 5px;"
+          placeholder="ページ内でハイライト検索する" >
         <form>
           <input
             v-model="user_id"
@@ -65,9 +71,9 @@
         </thead>
         <tbody>
           <tr v-for="item in getItems" :key="item.id">
-            <td>{{ item.user_id }}</td>
-            <td>{{ item.title }}</td>
-            <td>{{ item.content }}</td>
+            <td v-html="highlightSerch(item.user_id)"></td>
+            <td v-html="highlightSerch(item.title)"></td>
+            <td v-html="highlightSerch(item.content)"></td>
             <td>
               <v-btn @click="detailConntent(item.id)">詳細</v-btn>
             </td>
@@ -103,6 +109,7 @@ export default {
   },
   data () {
     return {
+      highlight: '',
       postItems: [],
       currentPage: 1,
       parPage: 5,
@@ -122,6 +129,15 @@ export default {
     this.fetchItem()
   },
   methods: {
+    highlightSerch(text) {
+      let highlightWord = this.highlight.trim()
+      if (highlightWord === '' && !text.includes(highlightWord)) return text
+
+      const re = new RegExp(highlightWord, 'ig');
+      return text.replace(re, search => {
+        return '<span style="background-color:yellow;font-weight:bold">'+ search + '</span>'
+      })
+    },
     onClickPage(currentPage) {
       console.log(typeof currentPage)
       console.log(currentPage)
@@ -152,6 +168,7 @@ export default {
       this.user_id = ''
       this.title = ''
       this.content = ''
+      this.highlight = ''
       this.fetchItem()
     },
     detailConntent(postId) {
