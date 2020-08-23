@@ -132,10 +132,9 @@ export default {
     highlightSerch(text) {
       let highlightWord = this.highlight.trim()
       if (highlightWord === '' && !text.includes(highlightWord)) return text
-
       const re = new RegExp(highlightWord, 'ig');
       return text.replace(re, search => {
-        return '<span style="background-color:yellow;font-weight:bold">'+ search + '</span>'
+        return `<span style="background-color:yellow;font-weight:bold">${search}</span>`
       })
     },
     onClickPage(currentPage) {
